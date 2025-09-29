@@ -41,6 +41,12 @@ class EcommerceApp {
             this.setupMobileMenu();
             this.setupNotifications();
             this.updateCartCount();
+            this.hideLoading();
+        });
+
+        // Garantir que loading seja removido após página carregar completamente
+        window.addEventListener('load', () => {
+            this.hideLoading();
         });
 
         // Search functionality
@@ -708,6 +714,21 @@ class EcommerceApp {
                 // Implementation for load more functionality
                 this.showNotification('Carregando mais produtos...', 'info');
             });
+        }
+    }
+
+    // ===== LOADING CONTROL =====
+    showLoading() {
+        const loading = document.getElementById('loading');
+        if (loading) {
+            loading.classList.add('show');
+        }
+    }
+
+    hideLoading() {
+        const loading = document.getElementById('loading');
+        if (loading) {
+            loading.classList.remove('show');
         }
     }
 }

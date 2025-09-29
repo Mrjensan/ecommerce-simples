@@ -2,6 +2,10 @@
 
 Um projeto de e-commerce desenvolvido com HTML, CSS e JavaScript vanilla. Inclui sistema de carrinho, checkout e painel administrativo básico.
 
+## 🌐 Demo
+
+Acesse a versão online do projeto: **[https://mrjensan.github.io/ecommerce-simples/](https://mrjensan.github.io/ecommerce-simples/)**
+
 ## 📝 Sobre
 
 Este é um projeto de estudo para criar um e-commerce funcional sem frameworks, usando apenas tecnologias web nativas. O objetivo é demonstrar como implementar funcionalidades comuns de uma loja online.
