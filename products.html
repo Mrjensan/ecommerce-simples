@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - TechStore</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-store"></i>
+                        <span>TechStore</span>
+                    </a>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar produtos..." class="search-input">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <button class="action-btn theme-toggle" id="themeToggle" title="Alterar Tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <div class="user-menu">
+                        <button class="action-btn" id="userMenuBtn">
+                            <i class="fas fa-user"></i>
+                            <span class="user-name">Conta</span>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="admin.html" class="dropdown-item">
+                                <i class="fas fa-cogs"></i>
+                                Painel Vendedor
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-heart"></i>
+                                Favoritos
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="cart-container">
+                        <button class="cart-btn" id="cartBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Início</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="breadcrumbCategory">Produtos</span>
+        </div>
+    </nav>
+
+    <!-- Products Page -->
+    <main class="products-page">
+        <div class="container">
+            <div class="products-layout">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>Filtros</h3>
+                        <button class="clear-filters" id="clearFilters">Limpar</button>
+                    </div>
+                    
+                    <!-- Categories Filter -->
+                    <div class="filter-section">
+                        <h4>Categorias</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="smartphones" name="category">
+                                <span class="checkmark"></span>
+                                Smartphones
+                                <span class="count">(15)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="laptops" name="category">
+                                <span class="checkmark"></span>
+                                Laptops
+                                <span class="count">(12)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="tablets" name="category">
+                                <span class="checkmark"></span>
+                                Tablets
+                                <span class="count">(8)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="acessorios" name="category">
+                                <span class="checkmark"></span>
+                                Acessórios
+                                <span class="count">(25)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="games" name="category">
+                                <span class="checkmark"></span>
+                                Games
+                                <span class="count">(10)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Range Filter -->
+                    <div class="filter-section">
+                        <h4>Faixa de Preço</h4>
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Mín" min="0">
+                                <span>até</span>
+                                <input type="number" id="maxPrice" placeholder="Máx" min="0">
+                            </div>
+                            <div class="price-slider">
+                                <input type="range" id="priceRange" min="0" max="5000" value="5000" step="50">
+                                <div class="price-display">R$ 0 - R$ <span id="maxPriceDisplay">5.000</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Brand Filter -->
+                    <div class="filter-section">
+                        <h4>Marcas</h4>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="apple" name="brand">
+                                <span class="checkmark"></span>
+                                Apple
+                                <span class="count">(8)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="samsung" name="brand">
+                                <span class="checkmark"></span>
+                                Samsung
+                                <span class="count">(12)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="dell" name="brand">
+                                <span class="checkmark"></span>
+                                Dell
+                                <span class="count">(6)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="lenovo" name="brand">
+                                <span class="checkmark"></span>
+                                Lenovo
+                                <span class="count">(5)</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="sony" name="brand">
+                                <span class="checkmark"></span>
+                                Sony
+                                <span class="count">(7)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Rating Filter -->
+                    <div class="filter-section">
+                        <h4>Avaliação</h4>
+                        <div class="rating-filters">
+                            <label class="rating-option">
+                                <input type="radio" name="rating" value="5">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>5 estrelas</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="rating" value="4">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>4+ estrelas</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="rating" value="3">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>3+ estrelas</span>
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Products Content -->
+                <div class="products-content">
+                    <!-- Products Header -->
+                    <div class="products-header">
+                        <div class="products-info">
+                            <h1 id="pageTitle">Todos os Produtos</h1>
+                            <span class="results-count" id="resultsCount">Mostrando 0 produtos</span>
+                        </div>
+                        
+                        <div class="products-controls">
+                            <!-- View Toggle -->
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid" title="Visualização em Grade">
+                                    <i class="fas fa-th"></i>
+                                </button>
+                                <button class="view-btn" data-view="list" title="Visualização em Lista">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Sort Options -->
+                            <select class="sort-select" id="sortSelect">
+                                <option value="default">Ordenar por</option>
+                                <option value="name-asc">Nome A-Z</option>
+                                <option value="name-desc">Nome Z-A</option>
+                                <option value="price-asc">Menor Preço</option>
+                                <option value="price-desc">Maior Preço</option>
+                                <option value="rating-desc">Melhor Avaliado</option>
+                                <option value="newest">Mais Recente</option>
+                            </select>
+                            
+                            <!-- Mobile Filters Toggle -->
+                            <button class="mobile-filters-btn" id="mobileFiltersBtn">
+                                <i class="fas fa-filter"></i>
+                                Filtros
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Active Filters -->
+                    <div class="active-filters" id="activeFilters">
+                        <!-- Active filters will be displayed here -->
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded here -->
+                    </div>
+                    
+                    <!-- Load More / Pagination -->
+                    <div class="pagination-container" id="paginationContainer">
+                        <button class="btn btn-outline load-more" id="loadMoreBtn">
+                            <i class="fas fa-plus"></i>
+                            Carregar Mais Produtos
+                        </button>
+                    </div>
+                    
+                    <!-- No Results -->
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <div class="no-results-content">
+                            <i class="fas fa-search"></i>
+                            <h3>Nenhum produto encontrado</h3>
+                            <p>Tente ajustar os filtros ou termos de busca</p>
+                            <button class="btn btn-primary" id="clearAllFilters">Limpar Filtros</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Filters Overlay -->
+    <div class="mobile-filters-overlay" id="mobileFiltersOverlay">
+        <div class="mobile-filters-content">
+            <div class="mobile-filters-header">
+                <h3>Filtros</h3>
+                <button class="close-mobile-filters" id="closeMobileFilters">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="mobile-filters-body">
+                <!-- Same filter content as sidebar -->
+            </div>
+            <div class="mobile-filters-footer">
+                <button class="btn btn-outline" id="clearMobileFilters">Limpar</button>
+                <button class="btn btn-primary" id="applyMobileFilters">Aplicar Filtros</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="quick-view-content">
+            <button class="close-quick-view" id="closeQuickView">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="quick-view-body" id="quickViewBody">
+                <!-- Quick view content loaded here -->
+            </div>
+        </div>
+    </div>
+    <div class="quick-view-overlay" id="quickViewOverlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-store"></i>
+                        <span>TechStore</span>
+                    </div>
+                    <p>Sua loja de tecnologia online com os melhores preços e qualidade garantida.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="products.html?category=smartphones">Smartphones</a></li>
+                        <li><a href="products.html?category=laptops">Laptops</a></li>
+                        <li><a href="products.html?category=tablets">Tablets</a></li>
+                        <li><a href="products.html?category=acessorios">Acessórios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contato@techstore.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechStore. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar-header">
+            <h3>Carrinho</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-sidebar-content" id="cartSidebarContent">
+            <!-- Cart content -->
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Scripts -->
+    <script src="js/products-data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

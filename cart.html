@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - TechStore</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-store"></i>
+                        <span>TechStore</span>
+                    </a>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="action-btn theme-toggle" id="themeToggle" title="Alterar Tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <div class="cart-container">
+                        <button class="cart-btn active">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Início</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Carrinho</span>
+        </div>
+    </nav>
+
+    <!-- Cart Page -->
+    <main class="cart-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>Carrinho de Compras</h1>
+                <p class="cart-summary" id="cartSummary">Você tem <span id="itemCount">0</span> item(ns) no seu carrinho</p>
+            </div>
+
+            <div class="cart-layout" id="cartLayout">
+                <!-- Cart Items -->
+                <div class="cart-content">
+                    <div class="cart-items" id="cartItemsContainer">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    
+                    <!-- Continue Shopping -->
+                    <div class="cart-actions">
+                        <a href="products.html" class="btn btn-outline">
+                            <i class="fas fa-arrow-left"></i>
+                            Continuar Comprando
+                        </a>
+                        <button class="btn btn-danger" id="clearCartBtn">
+                            <i class="fas fa-trash"></i>
+                            Limpar Carrinho
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary-card">
+                    <div class="summary-header">
+                        <h3>Resumo do Pedido</h3>
+                    </div>
+                    
+                    <div class="summary-content">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Frete</span>
+                            <span id="shipping">R$ 0,00</span>
+                            <small class="shipping-info">Grátis para compras acima de R$ 199</small>
+                        </div>
+                        
+                        <div class="summary-row discount-row" id="discountRow" style="display: none;">
+                            <span>Desconto</span>
+                            <span id="discount" class="discount-value">-R$ 0,00</span>
+                        </div>
+                        
+                        <div class="summary-divider"></div>
+                        
+                        <div class="summary-row total-row">
+                            <span>Total</span>
+                            <span id="total" class="total-price">R$ 0,00</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Coupon Code -->
+                    <div class="coupon-section">
+                        <h4>Cupom de Desconto</h4>
+                        <div class="coupon-form">
+                            <input type="text" id="couponInput" placeholder="Digite o código do cupom" maxlength="20">
+                            <button class="btn btn-outline" id="applyCouponBtn">Aplicar</button>
+                        </div>
+                        <div class="applied-coupon" id="appliedCoupon" style="display: none;">
+                            <div class="coupon-info">
+                                <span class="coupon-code"></span>
+                                <span class="coupon-discount"></span>
+                            </div>
+                            <button class="remove-coupon" id="removeCouponBtn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Checkout Button -->
+                    <div class="checkout-section">
+                        <button class="btn btn-primary btn-block" id="checkoutBtn" disabled>
+                            <i class="fas fa-lock"></i>
+                            Finalizar Compra
+                        </button>
+                        
+                        <div class="security-badges">
+                            <div class="security-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Compra 100% Segura</span>
+                            </div>
+                            <div class="security-badge">
+                                <i class="fas fa-undo"></i>
+                                <span>7 dias para trocar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty Cart -->
+            <div class="empty-cart" id="emptyCart" style="display: none;">
+                <div class="empty-cart-content">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Seu carrinho está vazio</h2>
+                    <p>Que tal dar uma olhada nos nossos produtos?</p>
+                    <a href="products.html" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i>
+                        Ver Produtos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recommended Products -->
+            <section class="recommended-products" id="recommendedProducts">
+                <div class="section-header">
+                    <h3>Produtos Recomendados</h3>
+                    <p>Baseado nos itens do seu carrinho</p>
+                </div>
+                
+                <div class="products-grid" id="recommendedGrid">
+                    <!-- Recommended products will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Remove Item Modal -->
+    <div class="modal" id="removeItemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Remover Item</h3>
+                <button class="close-modal" id="closeRemoveModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja remover este item do carrinho?</p>
+                <div class="item-preview" id="removeItemPreview">
+                    <!-- Item preview -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelRemove">Cancelar</button>
+                <button class="btn btn-danger" id="confirmRemove">
+                    <i class="fas fa-trash"></i>
+                    Remover
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="removeItemOverlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-store"></i>
+                        <span>TechStore</span>
+                    </div>
+                    <p>Sua loja de tecnologia online.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                        <li><a href="#">Rastreamento</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechStore. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/products-data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

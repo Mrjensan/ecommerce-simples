@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - E-commerce Moderno</title>
+    <meta name="description" content="Loja online de tecnologia com os melhores produtos e preços">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <i class="fas fa-store"></i>
+                    <span>TechStore</span>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar produtos..." class="search-input">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <!-- Theme Toggle -->
+                    <button class="action-btn theme-toggle" id="themeToggle" title="Alterar Tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <!-- User Account -->
+                    <div class="user-menu">
+                        <button class="action-btn" id="userMenuBtn">
+                            <i class="fas fa-user"></i>
+                            <span class="user-name">Conta</span>
+                        </button>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="admin.html" class="dropdown-item">
+                                <i class="fas fa-cogs"></i>
+                                Painel Vendedor
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-heart"></i>
+                                Favoritos
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-box"></i>
+                                Meus Pedidos
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart -->
+                    <div class="cart-container">
+                        <button class="cart-btn" id="cartBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                            <span class="cart-text">Carrinho</span>
+                        </button>
+                        
+                        <!-- Mini Cart Dropdown -->
+                        <div class="cart-dropdown" id="cartDropdown">
+                            <div class="cart-header">
+                                <h3>Carrinho de Compras</h3>
+                            </div>
+                            <div class="cart-items" id="cartItems">
+                                <!-- Cart items will be loaded here -->
+                            </div>
+                            <div class="cart-footer">
+                                <div class="cart-total">
+                                    Total: <span id="cartTotal">R$ 0,00</span>
+                                </div>
+                                <div class="cart-actions">
+                                    <button class="btn btn-outline" id="viewCartBtn">Ver Carrinho</button>
+                                    <button class="btn btn-primary" id="checkoutBtn">Finalizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    Início
+                </a>
+                <a href="products.html" class="nav-item">
+                    <i class="fas fa-th-large"></i>
+                    Produtos
+                </a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-list"></i>
+                        Categorias
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="products.html?category=smartphones">Smartphones</a>
+                        <a href="products.html?category=laptops">Laptops</a>
+                        <a href="products.html?category=tablets">Tablets</a>
+                        <a href="products.html?category=acessorios">Acessórios</a>
+                        <a href="products.html?category=games">Games</a>
+                    </div>
+                </div>
+                <a href="#ofertas" class="nav-item">
+                    <i class="fas fa-fire"></i>
+                    Ofertas
+                </a>
+                <a href="#contato" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    Contato
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="slide active">
+                <div class="slide-content">
+                    <div class="container">
+                        <div class="hero-content">
+                            <div class="hero-text">
+                                <h1>Tecnologia que Transforma</h1>
+                                <p>Descubra os melhores produtos tech com preços incríveis e entrega rápida</p>
+                                <div class="hero-buttons">
+                                    <a href="products.html" class="btn btn-primary">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Comprar Agora
+                                    </a>
+                                    <a href="#ofertas" class="btn btn-outline">
+                                        <i class="fas fa-fire"></i>
+                                        Ver Ofertas
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hero-image">
+                                <div class="product-showcase">
+                                    <div class="showcase-item">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="showcase-item">
+                                        <i class="fas fa-laptop"></i>
+                                    </div>
+                                    <div class="showcase-item">
+                                        <i class="fas fa-headphones"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Entrega Rápida</h3>
+                        <p>Receba em casa em até 24h</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Compra Segura</h3>
+                        <p>Seus dados protegidos</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Troca Grátis</h3>
+                        <p>7 dias para trocar</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Suporte 24/7</h3>
+                        <p>Atendimento sempre</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Categorias Populares</h2>
+                <p>Encontre o que você precisa</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-category="smartphones">
+                    <div class="category-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Smartphones</h3>
+                    <p>Os mais novos modelos</p>
+                    <span class="product-count">50+ produtos</span>
+                </div>
+                
+                <div class="category-card" data-category="laptops">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Laptops</h3>
+                    <p>Para trabalho e games</p>
+                    <span class="product-count">30+ produtos</span>
+                </div>
+                
+                <div class="category-card" data-category="tablets">
+                    <div class="category-icon">
+                        <i class="fas fa-tablet-alt"></i>
+                    </div>
+                    <h3>Tablets</h3>
+                    <p>Portabilidade máxima</p>
+                    <span class="product-count">20+ produtos</span>
+                </div>
+                
+                <div class="category-card" data-category="acessorios">
+                    <div class="category-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Acessórios</h3>
+                    <p>Complete sua experiência</p>
+                    <span class="product-count">100+ produtos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="produtos-destaque">
+        <div class="container">
+            <div class="section-header">
+                <h2>Produtos em Destaque</h2>
+                <p>Selecionados especialmente para você</p>
+            </div>
+            
+            <div class="products-grid" id="featuredProductsGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            
+            <div class="section-footer">
+                <a href="products.html" class="btn btn-outline">
+                    Ver Todos os Produtos
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers" id="ofertas">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ofertas Imperdíveis</h2>
+                <p>Promoções por tempo limitado</p>
+            </div>
+            
+            <div class="offers-grid">
+                <div class="offer-banner big">
+                    <div class="offer-content">
+                        <div class="offer-badge">-50%</div>
+                        <h3>Black Friday Tech</h3>
+                        <p>Smartphones com até 50% de desconto</p>
+                        <a href="products.html?offer=smartphones" class="btn btn-primary">Ver Ofertas</a>
+                    </div>
+                </div>
+                
+                <div class="offer-banner">
+                    <div class="offer-content">
+                        <div class="offer-badge">-30%</div>
+                        <h3>Notebooks Gamer</h3>
+                        <p>Performance máxima</p>
+                        <a href="products.html?offer=laptops" class="btn btn-outline">Conferir</a>
+                    </div>
+                </div>
+                
+                <div class="offer-banner">
+                    <div class="offer-content">
+                        <div class="offer-badge">Frete Grátis</div>
+                        <h3>Acessórios</h3>
+                        <p>Em compras acima de R$ 99</p>
+                        <a href="products.html?category=acessorios" class="btn btn-outline">Ver Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3>Fique por dentro das novidades</h3>
+                    <p>Receba ofertas exclusivas e lançamentos em primeira mão</p>
+                </div>
+                <div class="newsletter-form">
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Seu melhor e-mail" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Cadastrar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-store"></i>
+                        <span>TechStore</span>
+                    </div>
+                    <p>Sua loja de tecnologia online com os melhores preços e qualidade garantida.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="products.html?category=smartphones">Smartphones</a></li>
+                        <li><a href="products.html?category=laptops">Laptops</a></li>
+                        <li><a href="products.html?category=tablets">Tablets</a></li>
+                        <li><a href="products.html?category=acessorios">Acessórios</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                        <li><a href="#">Rastreamento</a></li>
+                        <li><a href="#">Fale Conosco</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(11) 9999-9999</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contato@techstore.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Seg-Sex: 8h às 18h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 TechStore. Todos os direitos reservados.</p>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar-header">
+            <h3>Carrinho de Compras</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-sidebar-content" id="cartSidebarContent">
+            <!-- Cart content loaded here -->
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <span>Carregando...</span>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- Scripts -->
+    <script src="js/products-data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - TechStore</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                <span>TechStore Admin</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link" data-section="products">
+                        <i class="fas fa-box"></i>
+                        <span>Produtos</span>
+                        <span class="badge" id="productsBadge">50</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#orders" class="nav-link" data-section="orders">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Pedidos</span>
+                        <span class="badge new" id="ordersBadge">12</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#customers" class="nav-link" data-section="customers">
+                        <i class="fas fa-users"></i>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#analytics" class="nav-link" data-section="analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#inventory" class="nav-link" data-section="inventory">
+                        <i class="fas fa-warehouse"></i>
+                        <span>Estoque</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link" data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name">Admin</span>
+                    <span class="user-role">Administrador</span>
+                </div>
+            </div>
+            <a href="index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sair</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title" id="pageTitle">Dashboard</h1>
+            </div>
+            
+            <div class="header-right">
+                <button class="header-btn theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <div class="notifications-dropdown">
+                    <button class="header-btn notifications-btn" id="notificationsBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">5</span>
+                    </button>
+                    <div class="notifications-panel" id="notificationsPanel">
+                        <div class="notifications-header">
+                            <h3>Notificações</h3>
+                            <button class="mark-all-read">Marcar todas como lidas</button>
+                        </div>
+                        <div class="notifications-list">
+                            <div class="notification-item">
+                                <i class="fas fa-shopping-cart"></i>
+                                <div class="notification-content">
+                                    <p>Novo pedido #12345</p>
+                                    <span class="notification-time">5 min atrás</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div class="notification-content">
+                                    <p>Estoque baixo: iPhone 13</p>
+                                    <span class="notification-time">1 hora atrás</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="index.html" class="header-btn store-link">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Ver Loja</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Content Sections -->
+        <div class="admin-content">
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Faturamento Hoje</h3>
+                            <div class="stat-value">R$ 15.420</div>
+                            <div class="stat-change positive">+12.5%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Pedidos Hoje</h3>
+                            <div class="stat-value">47</div>
+                            <div class="stat-change positive">+8.2%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Novos Clientes</h3>
+                            <div class="stat-value">12</div>
+                            <div class="stat-change positive">+15.1%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Visitantes</h3>
+                            <div class="stat-value">2.341</div>
+                            <div class="stat-change negative">-3.2%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Vendas dos Últimos 7 Dias</h3>
+                            <select class="chart-period">
+                                <option value="7">7 dias</option>
+                                <option value="30">30 dias</option>
+                                <option value="90">90 dias</option>
+                            </select>
+                        </div>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Produtos Mais Vendidos</h3>
+                        </div>
+                        <canvas id="productsChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="dashboard-widgets">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3>Pedidos Recentes</h3>
+                            <a href="#orders" class="view-all">Ver todos</a>
+                        </div>
+                        <div class="widget-content">
+                            <div class="recent-orders" id="recentOrders">
+                                <!-- Recent orders will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h3>Produtos com Estoque Baixo</h3>
+                            <a href="#inventory" class="view-all">Ver estoque</a>
+                        </div>
+                        <div class="widget-content">
+                            <div class="low-stock-items" id="lowStockItems">
+                                <!-- Low stock items will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section class="content-section" id="products-section">
+                <div class="section-header">
+                    <h2>Gerenciar Produtos</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline" id="exportProducts">
+                            <i class="fas fa-download"></i>
+                            Exportar
+                        </button>
+                        <button class="btn btn-primary" id="addProductBtn">
+                            <i class="fas fa-plus"></i>
+                            Adicionar Produto
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <div class="table-filters">
+                        <div class="search-box">
+                            <input type="text" placeholder="Buscar produtos..." id="productSearch">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <select class="filter-select" id="categoryFilter">
+                            <option value="">Todas as categorias</option>
+                            <option value="smartphones">Smartphones</option>
+                            <option value="laptops">Laptops</option>
+                            <option value="tablets">Tablets</option>
+                            <option value="acessorios">Acessórios</option>
+                        </select>
+                        <select class="filter-select" id="statusFilter">
+                            <option value="">Todos os status</option>
+                            <option value="active">Ativo</option>
+                            <option value="inactive">Inativo</option>
+                            <option value="out-of-stock">Sem estoque</option>
+                        </select>
+                    </div>
+                    
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="selectAll">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </th>
+                                    <th>Produto</th>
+                                    <th>Categoria</th>
+                                    <th>Preço</th>
+                                    <th>Estoque</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTableBody">
+                                <!-- Products will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section class="content-section" id="orders-section">
+                <div class="section-header">
+                    <h2>Pedidos</h2>
+                    <div class="order-stats">
+                        <div class="order-stat">
+                            <span class="stat-label">Pendentes</span>
+                            <span class="stat-value" id="pendingOrders">12</span>
+                        </div>
+                        <div class="order-stat">
+                            <span class="stat-label">Em Andamento</span>
+                            <span class="stat-value" id="processingOrders">8</span>
+                        </div>
+                        <div class="order-stat">
+                            <span class="stat-label">Entregues</span>
+                            <span class="stat-value" id="deliveredOrders">156</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="orders-container">
+                    <div class="orders-filters">
+                        <input type="text" placeholder="Buscar por número do pedido..." id="orderSearch">
+                        <select id="orderStatusFilter">
+                            <option value="">Todos os status</option>
+                            <option value="pending">Pendente</option>
+                            <option value="processing">Em Andamento</option>
+                            <option value="shipped">Enviado</option>
+                            <option value="delivered">Entregue</option>
+                            <option value="cancelled">Cancelado</option>
+                        </select>
+                        <input type="date" id="orderDateFilter">
+                    </div>
+                    
+                    <div class="orders-list" id="ordersList">
+                        <!-- Orders will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section class="content-section" id="analytics-section">
+                <div class="section-header">
+                    <h2>Relatórios e Analytics</h2>
+                    <div class="date-range-picker">
+                        <input type="date" id="startDate">
+                        <span>até</span>
+                        <input type="date" id="endDate">
+                        <button class="btn btn-outline">Aplicar</button>
+                    </div>
+                </div>
+                
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Faturamento por Período</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Vendas por Categoria</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Conversão de Visitantes</h3>
+                        <div class="conversion-stats">
+                            <div class="conversion-item">
+                                <span class="conversion-label">Taxa de Conversão</span>
+                                <span class="conversion-value">3.2%</span>
+                            </div>
+                            <div class="conversion-item">
+                                <span class="conversion-label">Carrinho Abandonado</span>
+                                <span class="conversion-value">68.5%</span>
+                            </div>
+                            <div class="conversion-item">
+                                <span class="conversion-label">Ticket Médio</span>
+                                <span class="conversion-value">R$ 327,50</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analytics-card">
+                        <h3>Top Produtos</h3>
+                        <div class="top-products" id="topProducts">
+                            <!-- Top products will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other sections would continue here... -->
+        </div>
+    </main>
+
+    <!-- Add Product Modal -->
+    <div class="modal" id="addProductModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Adicionar Produto</h3>
+                <button class="close-modal" id="closeAddProduct">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="productName">Nome do Produto *</label>
+                            <input type="text" id="productName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="productCategory">Categoria *</label>
+                            <select id="productCategory" required>
+                                <option value="">Selecione</option>
+                                <option value="smartphones">Smartphones</option>
+                                <option value="laptops">Laptops</option>
+                                <option value="tablets">Tablets</option>
+                                <option value="acessorios">Acessórios</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="productPrice">Preço *</label>
+                            <input type="number" id="productPrice" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="productStock">Estoque *</label>
+                            <input type="number" id="productStock" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productDescription">Descrição</label>
+                        <textarea id="productDescription" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelAddProduct">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Adicionar Produto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="addProductOverlay"></div>
+
+    <!-- Scripts -->
+    <script src="js/products-data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
